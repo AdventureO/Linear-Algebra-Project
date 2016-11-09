@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+
+        <title>Linear algebra project</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script
+                type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>The determinant of the matrix</h1>
+            <div class="row">
+                <div class="col-md-6 center-block">
+                    <form  method="post" action="/">
+                        <div class="form-group">
+                            <label for="matrix">Please enter matrix:</label><br />
+                            <textarea class="form-control" name="matrix" rows="8" cols="30">{% if new_matrix is defined %}{{matrix}}{% endif %}</textarea><br />
+                        </div>
+                        <input type="submit" class="btn btn-danger" />
+                    </form>
+            {% if new_matrix is defined %}
+                <!--<p>Transpose matrix: {{new_matrix}}</p>-->
+                    <p></p>
+                <p>The determinant of the matrix: {{determin}}</p>
+            {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
