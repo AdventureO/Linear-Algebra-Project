@@ -10,26 +10,45 @@
         <script
                 type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>
+
     </head>
     <body>
         <div class="container">
-            <h1>The determinant of the matrix</h1>
+            <div class = "page-header">
+                <h1 class="blue" style="color:#808080;"><strong>The determinant of the matrix</strong><small> in a flash</small>
+                </h1>
+            </div>
             <div class="row">
                 <div class="col-md-6 center-block">
                     <form  method="post" action="/">
                         <div class="form-group">
-                            <label for="matrix">Please enter matrix:</label><br />
-                            <textarea class="form-control" name="matrix" rows="8" cols="30">{% if new_matrix is defined %}{{matrix}}{% endif %}</textarea><br />
+                            <label style="font-size: 20px">Please enter your matrix:</label><br />
+                            <textarea class="form-control" name="matrix" style="width: 200px; height: 200px; font-size: 30px;">{% if new_matrix is defined %}{{matrix}}{% endif %}</textarea><br />
+                            <input type="submit" class="btn btn-danger"/>
                         </div>
-                        <input type="submit" class="btn btn-danger" />
                     </form>
             {% if new_matrix is defined %}
-                <!--<p>Transpose matrix: {{new_matrix}}</p>-->
-                    <p></p>
-                <p>The determinant of the matrix: {{determin}}</p>
+                    <div style="display: inline-flex;"><p class="text-left" style="color: #808080; margin-top: 10%; width: 290px; font-size: 20px">The determinant of the matrix: </p>
+                        <div style="font-size: 50px; padding-left: 10px; margin-top: -25px;"><strong>{{determin}}</strong></div>
+                    </div>
             {% endif %}
                 </div>
             </div>
+                <div style="text-align: right">
+                    <address>
+                        <strong>NeoSoft, Inc.</strong><br>
+                        795 Folsom Ave, Suite 600<br>
+                        San Francisco, CA 94107<br>
+                        <abbr title="Phone">P:</abbr> (095) 150-3132
+                    </address>
+                    <address>
+                        <strong>Our Team:</strong><br>
+                        <a href="mailto:#">dybovyk@ucu.edu.ua</a>
+                        <p><a href="mailto:#">petryshak@ucu.edu.ua</a></p>
+                        <a href="mailto:#">harysh@ucu.edu.ua</a>
+                        <p><a href="mailto:#">pryhoda@ucu.edu.ua</a></p>
+                    </address>
+                </div>
         </div>
     </body>
 </html>
