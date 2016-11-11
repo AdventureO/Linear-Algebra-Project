@@ -21,31 +21,6 @@ def transform_to_list_of_list(str_matrix):
     return transformed_list
 
 
-def tranpose(s):
-    matrix = []
-    lines = s.split('\n')
-    for l in lines:
-        matrix.append(l.split())
-
-    m = len(matrix)
-    n = len(matrix[0])
-
-    new_matrix = '$\\left(\\begin{matrix}\n'
-
-
-    for j in range(n):
-        line = ''
-        for i in range(m):
-            line += str(matrix[i][j])
-            if i != m - 1:
-                line += '&'
-            else:
-                line += '\\\\\n'
-        new_matrix += line
-
-    new_matrix += '\\end{matrix}\\right)$\n'
-    return new_matrix
-
 
 if __name__ == "__main__":
     app.run(debug=True)
