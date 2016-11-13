@@ -5,10 +5,6 @@ class Matrix():
 
     def determinant(self, matrix):
         number_of_rows_columns = len(matrix)
-        for columns in matrix:                          # Verification of square matrix
-            if number_of_rows_columns != len(columns):
-                return "Can't find determinant, because Your matrix isn't square. Please enter correct square matrix!"
-
         if number_of_rows_columns == 1: # if matrix size is 1x1 return this one element
             return matrix[0][0]
 
