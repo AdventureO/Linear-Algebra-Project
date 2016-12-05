@@ -10,7 +10,7 @@ def get_index():
         str_matrix = request.form["matrix"]
         error_message = checker_not_contains_characters(str_matrix)
         if error_message:
-            return render_template('index.html', error_message=error_message)
+            return render_template('determinant_page.html', error_message=error_message)
         data = transform_to_list_of_list(str_matrix)
         checker = True
         while checker:
@@ -20,11 +20,14 @@ def get_index():
                 checker = False
         error_message = checker_matrix_is_square(data)
         if error_message:
-            return render_template('index.html', error_message=error_message)
+            return render_template('determinant_page.html', error_message=error_message)
         determin = Matrix(data).det
-        return render_template('index.html', matrix=str_matrix, data =data, determin=determin)
+        return render_template('determinant_page.html', matrix=str_matrix, data =data, determin=determin)
     else:
-        return render_template('index.html')
+        return render_template('determinant_page.html')
+
+
+
 
 
 def transform_to_list_of_list(str_matrix):
@@ -46,7 +49,5 @@ def checker_matrix_is_square(matrix):
         if number_of_rows_columns != len(columns):
             return "Can't find determinant, because Your matrix isn't square. Please enter correct square matrix!"
 
-def last_empty_enter_deleter():
-    pass
 if __name__ == "__main__":
     app.run(debug=True)
