@@ -15,7 +15,7 @@
 	font-family: Arial, San-Serif;
 	font-size: 100%
 	}
-        textarea:focus{
+    textarea:focus{
         outline: 0;
         }
 
@@ -218,11 +218,13 @@
                         </div>
                     </form>
             {% if matrix is defined %}
-                    <div ><p class="text-left" style="color: #0B717F; margin-top: 10%; margin-left:50%; font-size: 250%; width: 400px; font-weight: bold;" >The determinant of the matrix: </p>
+                    <div ><p class="text-left" style="color: #0B717F; margin-top: 10%; margin-left:50%;width: 400px; font-weight: bold;" >The determinant of the matrix: </p>
                         <div style="color: #11E1FE; font-size: 50px; padding-left: 10px; margin-left: 80%; margin-top: 15%;"><strong>{{determin}}</strong></div>
                     </div>
             {% endif %}
-                    <p><strong>{{error_message}}</strong></p>
+            	<div style="color: #0B717F; margin-top: 20%; margin-left:10%; font-size: 300%; text-align: center;">
+                    <p style="width: 400px;"><strong>{{error_message}}</strong></p>
+                </div>
                 </div>
             </div>
         </div>
