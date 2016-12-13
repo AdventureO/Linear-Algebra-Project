@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from flask_wtf.file import FileField
 from flask_wtf import FlaskForm
 from wtforms import TextField
+import image_rectification
 
 #from image_retification import Rectifier
 
@@ -32,10 +33,18 @@ def upload():
         filename = secure_filename(form.photo.data.filename)
         form.photo.data.save('static/img/' + filename)
         left_top = form.left_top.data
+        left_top = int(left_top.split(' ')[0]), int(left_top.split(' ')[1])
         right_top = form.right_top.data
-        left_bottom = form.left_bottom.data
-        left_bottom = form.right_bottom.data
-        print(left_bottom, right_top, left_bottom, left_top, left_bottom)
+        right_top = int(right_top.split(' ')[0]), int(right_top.split(' ')[1])
+        right_bottom = form.right_bottom.data
+        right_bottom = int(right_bottom.split(' ')[0]), int(right_bottom.split(' ')[1])
+        left_bottom = form.form.left_bottom.data
+        left_bottom = int(left_bottom.split(' ')[0]), int(left_bottom.split(' ')[1])
+        
+        coordinates = (left_top, right_top, right_bottom, left_bottom)
+        print(coordinates)
+        rectifier = image_rectification.Rectifier()
+        rectifier.process_image('static/img/' + filename, coordinates, output_path=filename)   
     else:
         filename = None
     return render_template('rectification_page.html', form=form, filename=filename)
