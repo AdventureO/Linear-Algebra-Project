@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 from flask_wtf.file import FileField
 from flask_wtf import FlaskForm
 from wtforms import TextField
-import image_rectification
+import image_retification
 
 #from image_retification import Rectifier
 
