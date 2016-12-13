@@ -5,9 +5,19 @@
 		<div id="main-bar">
             <div>
                 <form action="/" method="post" enctype="multipart/form-data">
-                   <input class="btn btn-info" type="file" name="image" size="40">
+                    {{ form.photo }}<br>
+                    Left-top corner: <br>
+                    {{ form.left_top }} <br>
+                    Left-bottom corner: <br>
+                    {{form.right_top}} <br>
+                    Right-top corner: <br>
+                    {{ form.left_bottom }} <br>
+                    Right-bottom corner <br>
+                    {{form.right_bottom}} <br> <br>
                     <button type="submit" class="btn btn-info" value="Upload">Submit</button>
+                    <br> <br>
                 </form>
+
             </div>
             <label class="label-class" style="margin-left: 30px;">Before <span style="margin-left: 350px">After</span></label><br>
             {% if image is defined %}

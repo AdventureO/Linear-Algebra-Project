@@ -1,0 +1,23 @@
+
+.about-us-bar{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.about-us-bar div{
+	width: 25%;
+	float: left;
+	text-align: center;
+}
+
+.about-us-bar div img{
+	margin: 0 auto;
+	display: block;
+	border-radius: 100px;
+	width: 250px;
+	height: 250px;
+}
+
+.text-decorator {
+    
+}
