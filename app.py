@@ -8,7 +8,6 @@ from flask_wtf import FlaskForm
 from wtforms import TextField
 import image_retification
 
-#from image_retification import Rectifier
 
 app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -38,35 +37,19 @@ def upload():
         right_top = int(right_top.split(' ')[0]), int(right_top.split(' ')[1])
         right_bottom = form.right_bottom.data
         right_bottom = int(right_bottom.split(' ')[0]), int(right_bottom.split(' ')[1])
-        left_bottom = form.form.left_bottom.data
+        left_bottom = form.left_bottom.data
         left_bottom = int(left_bottom.split(' ')[0]), int(left_bottom.split(' ')[1])
         
         coordinates = (left_top, right_top, right_bottom, left_bottom)
         print(coordinates)
-        rectifier = image_rectification.Rectifier()
-        rectifier.process_image('static/img/' + filename, coordinates, output_path=filename)   
+        rectifier = image_retification.Rectifier()
+        rectifier.process_image('static/img/' + filename, coordinates, output_path='static/img/' + filename + '.png')   
     else:
         filename = None
-    return render_template('rectification_page.html', form=form, filename=filename)
+    print(filename + '.png')
+    return render_template('rectification_page.html', form=form, filename='static/img/' + filename+'.png')
 
 
-"""
-@app.route('/', methods=["GET", "POST"])
-def image_manipulator():
-   if request.method == 'POST':
-       str_coordinates = request.form["coordinates"]
-       print(str_coordinates)
-       '''
-       rectifier = Rectifier()
-       rectifier.process(path, coordinates, new_path)
-       '''
-       image_loc = "img/my_file.png"
-       image = request.files['image']
-       ext = image.filename[image.filename.find('.'):]
-       image.save(os.path.join(app.config['UPLOAD_FOLDER'], 'my_file' + ext))
-       return render_template('rectification_page.html', image=image_loc)
-   return render_template('rectification_page.html')
-"""
 @app.route('/about_us', methods=["GET", "POST"])
 def about_us():
     return render_template('contact_us.html')
