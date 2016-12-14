@@ -43,11 +43,12 @@ def upload():
         coordinates = (left_top, right_top, right_bottom, left_bottom)
         print(coordinates)
         rectifier = image_retification.Rectifier()
+        filename = filename
         rectifier.process_image('static/img/' + filename, coordinates, output_path='static/img/' + filename + '.png')   
+    
     else:
         filename = None
-    print(filename + '.png')
-    return render_template('rectification_page.html', form=form, filename='static/img/' + filename+'.png')
+    return render_template('rectification_page.html', form=form, filename=filename)
 
 
 @app.route('/about_us', methods=["GET", "POST"])
