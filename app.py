@@ -34,8 +34,8 @@ def upload():
         left_top = form.left_top.data
         right_top = form.right_top.data
         left_bottom = form.left_bottom.data
-        left_bottom = form.right_bottom.data
-        print(left_bottom, right_top, left_bottom, left_top, left_bottom)
+        right_bottom = form.right_bottom.data
+        print(left_bottom, right_top, left_bottom, left_top, right_bottom)
     else:
         filename = None
     return render_template('rectification_page.html', form=form, filename=filename)
