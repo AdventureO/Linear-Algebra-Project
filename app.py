@@ -7,7 +7,7 @@ from flask_wtf.file import FileField
 from flask_wtf import FlaskForm
 from wtforms import TextField
 
-#from image_retification import Rectifier
+from image_retification import Rectifier
 
 app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -28,36 +28,24 @@ class RectifierForm(FlaskForm):
 @app.route('/', methods=('GET', 'POST'))
 def upload():
     form = RectifierForm(csrf_enabled=False)
-    if form.validate_on_submit():
+    if request.method == "POST":
         filename = secure_filename(form.photo.data.filename)
-        form.photo.data.save('static/img/' + filename)
+        form.photo.data.save('static/img/' + 'my_file.png')
         left_top = form.left_top.data
+        left_top = int(left_top.split(' ')[0]), int(left_top.split(' ')[1])
         right_top = form.right_top.data
+        right_top = int(right_top.split(' ')[0]), int(right_top.split(' ')[1])
         left_bottom = form.left_bottom.data
+        left_bottom = int(left_bottom.split(' ')[0]), int(left_bottom.split(' ')[1])
         right_bottom = form.right_bottom.data
-        print(left_bottom, right_top, left_bottom, left_top, right_bottom)
-    else:
-        filename = None
-    return render_template('rectification_page.html', form=form, filename=filename)
+        right_bottom = int(right_bottom.split(' ')[0]), int(right_bottom.split(' ')[1])
+        coordinates = (left_top, right_top, right_bottom, left_bottom)
+        rectifier = Rectifier()
+        filename = filename
+        rectifier.process_image('static/img/' + filename, coordinates, output_path='static/img/' + "my_file1.png")
+        return render_template('rectification_page.html', form=form, filename=filename)
+    return render_template('rectification_page.html', form=form)
 
-
-"""
-@app.route('/', methods=["GET", "POST"])
-def image_manipulator():
-   if request.method == 'POST':
-       str_coordinates = request.form["coordinates"]
-       print(str_coordinates)
-       '''
-       rectifier = Rectifier()
-       rectifier.process(path, coordinates, new_path)
-       '''
-       image_loc = "img/my_file.png"
-       image = request.files['image']
-       ext = image.filename[image.filename.find('.'):]
-       image.save(os.path.join(app.config['UPLOAD_FOLDER'], 'my_file' + ext))
-       return render_template('rectification_page.html', image=image_loc)
-   return render_template('rectification_page.html')
-"""
 @app.route('/about_us', methods=["GET", "POST"])
 def about_us():
     return render_template('contact_us.html')

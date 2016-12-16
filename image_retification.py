@@ -2,7 +2,6 @@ import numpy as np
 import cv2
 import matplotlib.image as img
 
-
 class Rectifier:
     def __init__(self):
         self.__image = None

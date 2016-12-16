@@ -6,35 +6,30 @@
             <div>
                 <form action="/" method="post" enctype="multipart/form-data" class="font_viev">
                     {{ form.photo }}<br>
-                    Left-top corner: <br>
+                    Left-top corner(x y): <br>
                     {{ form.left_top }} <br>
-                    Left-bottom corner: <br>
+                    Left-bottom corner(x y): <br>
                     {{form.right_top}} <br>
-                    Right-top corner: <br>
+                    Right-top corner(x y): <br>
                     {{ form.left_bottom }} <br>
-                    Right-bottom corner <br>
+                    Right-bottom corner(x y): <br>
                     {{form.right_bottom}} <br> <br>
                     <button type="submit" class="btn btn-info" value="Upload">Submit</button>
                     <br> <br>
                 </form>
 
             </div>
+            {% if filename is defined %}
             <label class="label-class" style="margin-left: 30px;">Before <span style="margin-left: 350px">After</span></label><br>
-            {% if image is defined %}
-                <div class="image-present lol">
-                    <img src="{{ url_for('static', filename='img/Zas1.jpg') }}">
+            <div class="image-present lol">
+                    <img src="{{ url_for('static', filename='img/my_file.png') }}">
                 </div>
                 <div class="image-present lol">
-                    <img src="{{ url_for('static', filename='img/my_file.png') }}">
+                    <img src="{{ url_for('static', filename='img/my_file1.png') }}">
                 </div>
 
             {% endif %}
-                <div class="image-present lol">
-                    <img src="{{ url_for('static', filename='img/Zas1.jpg') }}">
-                </div>
-                <div class="image-present lol">
-                    <img src="{{ url_for('static', filename='img/Zas2.jpg') }}">
-                </div>
+
         </div>
 
     <div class="clear-class"></div>
