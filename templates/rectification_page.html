@@ -1,35 +1,33 @@
-ʼ{% extends "layout.html" %}
+{% extends "layout.html" %}
 {% block content %}
 
     <div class="clear-class"></div>
 		<div id="main-bar">
             <div>
-                <form action="/" method="post" enctype="multipart/form-data" class="font_viev">
+                <form action="/" method="post" enctype="multipart/form-data">
                     {{ form.photo }}<br>
-                    Left-top corner(x y): <br>
+                    Left-top corner: <br>
                     {{ form.left_top }} <br>
-                    Left-bottom corner(x y): <br>
+                    Left-bottom corner: <br>
                     {{form.right_top}} <br>
-                    Right-top corner(x y): <br>
+                    Right-top corner: <br>
                     {{ form.left_bottom }} <br>
-                    Right-bottom corner(x y): <br>
+                    Right-bottom corner <br>
                     {{form.right_bottom}} <br> <br>
                     <button type="submit" class="btn btn-info" value="Upload">Submit</button>
                     <br> <br>
                 </form>
 
             </div>
-            {% if filename is defined %}
             <label class="label-class" style="margin-left: 30px;">Before <span style="margin-left: 350px">After</span></label><br>
-            <div class="image-present lol">
-                    <img src="{{ url_for('static', filename='img/my_file.png') }}">
+            {% if filename is defined %}
+                <div class="image-present lol">
+                    <img src="{{ url_for('static', filename='img/in.png') }}">
                 </div>
                 <div class="image-present lol">
-                    <img src="{{ url_for('static', filename='img/my_file1.png') }}">
+                    <img src="{{ url_for('static', filename='img/' + filename) }}">
                 </div>
-
-            {% endif %}
-
+		{% endif %}
         </div>
 
     <div class="clear-class"></div>
